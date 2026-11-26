@@ -1,0 +1,6 @@
+import React from 'react';import {Pressable,Text,View,StyleSheet} from 'react-native';
+import type {Product} from '@/types';import {colors} from '@/theme';import {formatMoney} from '@/utils/money';
+export function ProductRow({product,onPress,onAdd}:{product:Product;onPress:()=>void;onAdd:()=>void}){
+ return <View style={s.row}><Pressable onPress={onPress} style={{flex:1,flexDirection:'row',gap:10,alignItems:'center'}}><Text style={s.emoji}>{product.emoji}</Text><View style={{flex:1}}><Text style={s.name}>{product.name}</Text>{!!product.description&&<Text style={s.meta}>{product.description}</Text>}<Text style={s.price}>{formatMoney(product.price)}</Text></View></Pressable><Pressable onPress={onAdd} style={s.add}><Text style={{color:'#fff',fontWeight:'800'}}>+</Text></Pressable></View>;
+}
+const s=StyleSheet.create({row:{backgroundColor:'#fff',padding:12,borderRadius:14,marginBottom:8,flexDirection:'row',alignItems:'center'},emoji:{fontSize:30},name:{fontWeight:'700',color:colors.text},meta:{fontSize:12,color:colors.muted},price:{fontWeight:'800',color:colors.primary,marginTop:4},add:{backgroundColor:colors.primary,width:36,height:36,borderRadius:18,alignItems:'center',justifyContent:'center'}});

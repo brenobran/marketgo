@@ -1,0 +1,2 @@
+import {Alert,Text} from 'react-native';import {useRouter} from 'expo-router';import {Screen,Title,Button} from '@/components/UI';import {useAuth} from '@/context/AuthContext';
+export default function Profile(){const {user,signOut}=useAuth();const router=useRouter();return <Screen><Title>Perfil</Title><Text style={{marginBottom:6}}>E-mail: {user?.email}</Text><Text style={{marginBottom:18}}>Nome: {user?.user_metadata?.name??'Usuário'}</Text><Button title="Sair da conta" onPress={async()=>{await signOut();router.replace('/(auth)/login');}}/></Screen>}

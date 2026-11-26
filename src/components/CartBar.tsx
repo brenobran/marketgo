@@ -1,0 +1,3 @@
+import React from 'react';import {Pressable,Text,StyleSheet} from 'react-native';import {colors} from '@/theme';import {formatMoney} from '@/utils/money';
+export function CartBar({count,total,onPress}:{count:number;total:number;onPress:()=>void}){if(!count)return null;return <Pressable onPress={onPress} style={s.bar}><Text style={s.txt}>Ver carrinho · {count} item(ns)</Text><Text style={s.txt}>{formatMoney(total)}</Text></Pressable>}
+const s=StyleSheet.create({bar:{backgroundColor:colors.primary,padding:16,borderRadius:14,flexDirection:'row',justifyContent:'space-between',marginTop:8},txt:{color:'#fff',fontWeight:'800'}});
